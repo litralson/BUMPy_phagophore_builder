@@ -1,3 +1,5 @@
+# BUMPy_phagophore_builder
+Modified BUMPy package with a new class of shape called phagophore.
 #			BUMPy
 
 This program is used to generate coordinate files for use in molecular dynamics simulations of curved lipid bilayers
