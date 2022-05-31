@@ -66,4 +66,4 @@ python bumpy.py -f input_pdbs/small_flat_bilayer.pdb -s cylinder -z 10 -g r_cyli
 python bumpy.py -f input_pdbs/small_flat_bilayer.pdb -s cylinder -z 10 -g r_cylinder:100 l_cylinder:200 -o out.pdb -p topol.top -n index.ndx --gen_dummy_particles --dummy_grid_thickness 50 --dummy_name BEAD
 
 #phagophore command
-python bumpy_Copy.py -f examples/input_pdbs/small_flat_bilayer.pdb -s phagophore -z 10 -g r_inner_semisphere:500 v_gap:100 -o output/phagophore_test_.pdb
+python bumpy_phagophore.py -f examples/input_pdbs/small_flat_bilayer.pdb -s phagophore -z 10 -g r_inner_semisphere:500 v_gap:100 -o output/phagophore_test_.pdb
