@@ -1116,16 +1116,17 @@ class shapes:
             out_tordims = shapes.outer_quarter_torus.dimension_requirements(r_inner_semisphere + 0.5*v_gap, 0.5*v_gap )
             in_sphdims = shapes.semisphere.dimension_requirements(r_inner_semisphere)
             out_sphdims = shapes.semisphere.dimension_requirements(r_inner_semisphere + v_gap)
-            return np.array([max([in_tordims[0],out_tordims[0],in_sphdims[0], out_sphdims[0]]), max([in_tordims[1],out_tordims[1],in_sphdims[1],out_sphdims[1]])])
+            return np.array([max([in_tordims[0],out_tordims[0],in_sphdims[0], out_sphdims[0]]), 
+            max([in_tordims[1],out_tordims[1],in_sphdims[1],out_sphdims[1]])])
 
         @staticmethod
         def final_dimensions(r_inner_semisphere, v_gap, buff=50):
-            return np.array([r_inner_semisphere + 1.5 * (v_gap+ buff), 2 * (r_inner_semisphere+ v_gap+ buff), 2 * (r_inner_semisphere+ v_gap+ buff) ])
+            return np.array([r_inner_semisphere + 1.5 * (v_gap+ buff),
+             2 * (r_inner_semisphere+ v_gap+ buff), 2 * (r_inner_semisphere+ v_gap+ buff) ])
 
         @staticmethod
         def gen_shape(template_bilayer, zo, r_inner_semisphere, v_gap):
             ''' Two semispheres connected by a half-torus'''
-            #cyl = shapes.cylinder.gen_shape(template_bilayer, zo, r_cylinder, l_cylinder, completeness=1)
             in_semisphere = shapes.semisphere.gen_shape(template_bilayer, zo, r_inner_semisphere)
             out_semisphere = shapes.semisphere.gen_shape(template_bilayer, zo, r_inner_semisphere+ v_gap)
             
