@@ -1106,7 +1106,7 @@ class shapes:
             cyl.append(semisphere2)
             return cyl
     
-    # test code for making phagophore
+    # code for making phagophore
     
     class phagophore(shape):
         @staticmethod
