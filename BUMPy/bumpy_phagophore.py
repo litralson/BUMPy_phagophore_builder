@@ -22,6 +22,8 @@ def fatal_error(message):
     print(message, file=sys.stderr)
     sys.exit(1)
 
+print('test')
+
 
 try:
     from inspect import getfullargspec
