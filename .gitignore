@@ -1,0 +1,9 @@
+BUMPy/debugging/**
+BUMPy/*.gro
+__pycache__
+
+*.tpr
+*.trr
+*.log
+*.edr
+*.cpt
