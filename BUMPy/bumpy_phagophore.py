@@ -1086,7 +1086,7 @@ class shapes:
         def dimension_requirements(r_cylinder, l_cylinder, buff=50):
             cyldims = shapes.cylinder.dimension_requirements(r_cylinder, l_cylinder)
             sphdims = shapes.semisphere.dimension_requirements(r_cylinder)
-            return np.array([max([cyldims[0], sphdims[0]]), max([cyldims[1], sphdims[1]])])
+            return np.array([max([cyldims[0], sphdims[0]]), max([cyldims[1], sphdims[1]])]) 
 
         @staticmethod
         def final_dimensions(r_cylinder, l_cylinder, buff=50):
