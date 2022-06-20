@@ -1,5 +1,6 @@
 # BUMPy_phagophore_builder
 Modified BUMPy package with a new class of shape called phagophore.
+New circular flat bilayer has been added on Jun 20, 2022
 #			BUMPy
 
 This program is used to generate coordinate files for use in molecular dynamics simulations of curved lipid bilayers

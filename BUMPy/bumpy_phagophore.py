@@ -752,6 +752,31 @@ class shapes:
                 flat_slice.write_coordinates(print_intermediates, position=False)
             return flat_slice
 
+    class circular_bilayer(shape):
+        ''' This class is to generate a flat circular bilayer
+        '''
+        @staticmethod
+        def dimension_requirements(r_circ, buff=50):
+            return np.array([2*(r_circ + buff), 2*(r_circ + buff)])
+
+        @staticmethod
+        def final_dimensions(r_circ, buff=50):
+            return np.array([2*(r_circ + buff),2*(r_circ + buff), 2 * buff])
+
+        @ staticmethod
+        def gen_shape(template_bilayer, zo, r_circ, r_hole=0, cutoff_method='com',
+                      print_intermediates=False):
+
+            slice_origin = np.mean(template_bilayer.coords, axis=0)[0:2]
+            C_flat_slice  = template_bilayer.slice_pdb(template_bilayer.circular_slice( slice_origin,r_circ,r_hole))
+                                                     
+            C_flat_slice.center_on_zero()
+
+            if print_intermediates:
+                C_flat_slice.write_coordinates(print_intermediates, position=False)
+            return C_flat_slice
+
+
     class semisphere(shape):
         @staticmethod
         def dimension_requirements(r_sphere, buff=50):
@@ -853,7 +878,8 @@ class shapes:
             inner_slice_max = np.sqrt(slice_min ** 2 + np.pi * inner_r_tube * r_torus - 2 * (inner_r_tube) ** 2)
             outer_slice_max = np.sqrt(slice_min ** 2 + np.pi * outer_r_tube * r_torus - 2 * (outer_r_tube) ** 2)
 
-            slice_origin = np.mean(template_bilayer.coords, axis=0)[0:2]
+            slice_origin = np.mean(template_bilayer.coords, axis=0)[0:2] 
+            #slice_origin = np.mean(template_bilayer.coords[:, 0:2], axis=0)
             # calculate slice indices
             bool_in_top_slice = template_bilayer.circular_slice(slice_origin, outer_slice_max, exclude_radius=slice_min)
             bool_in_bot_slice = template_bilayer.circular_slice(slice_origin, inner_slice_max, exclude_radius=slice_min)
