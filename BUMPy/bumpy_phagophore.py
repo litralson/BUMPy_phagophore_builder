@@ -738,7 +738,7 @@ class shapes:
         def final_dimensions(x_dimension, y_dimension, buff=50):
             return np.array([x_dimension, y_dimension, 2 * buff])
 
-        @ staticmethod
+        @staticmethod
         def gen_shape(template_bilayer, zo, x_dimension, y_dimension, r_hole=0, cutoff_method='com',
                       print_intermediates=False):
             slice_origin = template_bilayer.gen_slicepoint()
@@ -763,7 +763,7 @@ class shapes:
         def final_dimensions(r_circ, buff=50):
             return np.array([2*(r_circ + buff),2*(r_circ + buff), 2 * buff])
 
-        @ staticmethod
+        @staticmethod
         def gen_shape(template_bilayer, zo, r_circ, r_hole=0, cutoff_method='com',
                       print_intermediates=False):
 
@@ -1167,6 +1167,43 @@ class shapes:
     
             return in_quarter_torus
             
+
+# class for making flat disk. It comprises of two flat circular discs joined by a half torus.
+    class flat_disk(shape):
+        @staticmethod
+        def dimension_requirements(r_disk, v_gap, buff=50):   
+
+            fc_dims = shapes.circular_bilayer.dimension_requirements(r_disk)
+            out_tordims = shapes.outer_quarter_torus.dimension_requirements(r_disk+ 0.5*v_gap, 0.5*v_gap )
+
+            return np.array([max([fc_dims[0],out_tordims[0]]), max([fc_dims[1],out_tordims[1]])])
+
+        @staticmethod
+        def final_dimensions(r_disk, v_gap, buff=50):
+            return np.array([2*r_disk + (v_gap+ buff),2*r_disk + (v_gap+ buff) , v_gap+ buff])
+
+        @staticmethod
+        def gen_shape(template_bilayer, zo, r_disk, v_gap):
+            ''' Two circular discs connected by a half-torus'''
+            # making the flat circular discs (fc_disc)
+            bot_fc_disc = shapes.circular_bilayer.gen_shape(template_bilayer, zo, r_disk)
+            top_fc_disc = deepcopy(bot_fc_disc)
+            
+            # making the rim
+            top_out_quarter_torus = shapes.outer_quarter_torus.gen_shape(template_bilayer, zo, r_disk, 0.5*v_gap)
+            bot_out_quarter_torus = deepcopy(top_out_quarter_torus)
+            bot_out_quarter_torus.rotate([180, 0, 0])
+            top_out_quarter_torus.append(bot_out_quarter_torus)
+        
+          
+            # appending the discs to the rim
+            bot_fc_disc.coords -= [ 0, 0, 0.5*v_gap]
+            top_fc_disc.coords += [ 0, 0, 0.5*v_gap]
+            bot_fc_disc.append(top_fc_disc)
+            bot_fc_disc.append(top_out_quarter_torus)
+    
+            return bot_fc_disc
+
     class sphere_cylinder(shape):
         @staticmethod
         def dimension_requirements(r_sphere, r_cylinder, l_cylinder, r_junction):
