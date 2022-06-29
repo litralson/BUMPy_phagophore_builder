@@ -1,6 +1,15 @@
 #phagophore command 
 python bumpy_phagophore.py -f examples/input_pdbs/small_flat_bilayer.pdb -s phagophore -z 10 -g r_inner_semisphere:500 v_gap:100 -o output/phagophore_test_.pdb
 
+#circular bilayer command
+bumpy_phagophore.py -f examples/input_pdbs/small_flat_bilayer.pdb -s circular_bilayer -z 10 -g r_circ:100 -o output/circ_bilayer_.pdb
+ER composition:
+bumpy_phagophore.py -f examples/input_pdbs/ER-memb-insane-CG-md.pdb -s circular_bilayer -z 10 -g r_circ:200 -o output/circ/circ_1.pdb -p output/circ/topol.top -n output/circ/circ_1.ndx
+
+#flat disk command
+bumpy_phagophore.py -f examples/input_pdbs/small_flat_bilayer.pdb -s flat_disk -z 10 -g r_disk:300 v_gap:100 -o output/disk_.pdb
+
+
 # These commands assume bumpy.py and the input files are in your working directory, and that the "python" command is
 # python 3 - check with "python --version", as for some setups it'll be python2, which is not supported.
 

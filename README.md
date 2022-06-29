@@ -1,5 +1,5 @@
 # BUMPy_phagophore_builder
-Modified BUMPy package with a new class of shape called phagophore.
+Modified BUMPy package with a new classes of shapes - phagophore, circular_bilayer, flat_disk.
 New circular flat bilayer has been added on Jun 20, 2022
 #			BUMPy
 
