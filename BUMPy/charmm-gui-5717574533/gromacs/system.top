@@ -1,0 +1,55 @@
+#include "toppar/martini_v2.2.itp"
+#include "toppar/martini_v2.0_lipids_all_201506.itp"
+#include "toppar/martini_v2.0_ions.itp"
+
+[ system ]
+; name
+Martini system
+
+[ molecules ]
+; name        number
+DOPE 1
+DOPC 2
+DOPE 1
+DOPS 1
+DOPC 1
+DOPE 1
+DOPC 1
+DOPS 1
+DOPC 3
+POPI 1
+DOPC 6
+DOPE 1
+DOPC 3
+DOPE 1
+DOPC 3
+POPI 1
+DOPC 1
+DOPE 1
+DOPC 2
+DOPE 2
+POPI 1
+DOPC 1
+POPI 1
+DOPC 3
+DOPE 1
+DOPS 1
+DOPC 1
+DOPE 1
+POPI 2
+DOPS 1
+DOPC 3
+POPI 1
+DOPC 2
+DOPE 1
+DOPC 2
+DOPE 1
+DOPC 6
+DOPE 1
+DOPC 6
+DOPE 1
+POPI 1
+DOPC 3
+DOPE 2
+DOPC 3
+W 997
